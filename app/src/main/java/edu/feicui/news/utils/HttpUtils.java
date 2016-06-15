@@ -46,7 +46,6 @@ public class HttpUtils {
                 e.printStackTrace();
             }
         }
-        Log.d(TAG, "getInfo: "+rs);
         return rs;
     }
 }

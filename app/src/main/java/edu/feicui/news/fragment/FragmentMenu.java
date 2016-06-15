@@ -2,6 +2,7 @@ package edu.feicui.news.fragment;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import edu.feicui.news.R;
+import edu.feicui.news.ui.CollectionActivity;
 import edu.feicui.news.ui.NewsListActivity;
 
 
@@ -53,7 +55,8 @@ public class FragmentMenu extends Fragment implements View.OnClickListener {
                 break;
             case R.id.rl_reading:
                 rls[1].setBackgroundColor(0x33c85555);
-
+                Intent intent=new Intent(getActivity(), CollectionActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rl_local:
                 rls[2].setBackgroundColor(0x33c85555);

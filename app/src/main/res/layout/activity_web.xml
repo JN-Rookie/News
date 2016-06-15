@@ -4,9 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.feicui.mynewsapp.ui.WebActivity">
+    tools:context="edu.feicui.news.ui.WebActivity">
+    <include
+        layout="@layout/web_title"
+        android:id="@+id/in_web"
+        />
+    <RelativeLayout
+        android:id="@+id/rll_web"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/prg_bar"
+            style="@style/testProgressBarStyle"
+            android:layout_width="100sp"
+            android:layout_height="100sp"/>
+        <TextView
+            android:paddingTop="20dp"
+            android:textSize="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/prg_bar"
+            android:text="正在加载,请稍候!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 
     <WebView
+        android:visibility="invisible"
+        android:layout_below="@+id/in_web"
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

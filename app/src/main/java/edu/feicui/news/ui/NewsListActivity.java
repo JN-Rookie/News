@@ -32,7 +32,7 @@ import edu.feicui.news.utils.BaseTools;
 import edu.feicui.news.utils.NewsTOP;
 import edu.feicui.news.view.ColumnHorizontalScrollView;
 
-public class NewsListActivity extends FragmentActivity {
+public class NewsListActivity extends MyBaseActivity {
     private static final String TAG = "NewsListActivity";
     private ColumnHorizontalScrollView mScrollView;//自定义HorizontalScrollView
     LinearLayout   mRadioGroup_content;
