@@ -11,6 +11,7 @@ import java.util.List;
 import edu.feicui.news.bean.News;
 
 /**
+ * 往数据库表内添加数据
  * Created by Administrator on 2016/6/15.
  */
 public class NewsDBManager {
@@ -22,6 +23,8 @@ public class NewsDBManager {
         this.context=context;
         dbHelper=new DBOpenHelper(context);
     }
+
+//    添加数据的方法
     public boolean saveLoveNews(String summary, String icon, String stamp, String title, String nid, String link, String type){
         try {
             SQLiteDatabase db=dbHelper.getWritableDatabase();
@@ -48,6 +51,7 @@ public class NewsDBManager {
         }
     }
 
+//    读取数据库表的方法
     public List<News.DataBean> queryNews() {
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         String sql="select * from lovenews ";

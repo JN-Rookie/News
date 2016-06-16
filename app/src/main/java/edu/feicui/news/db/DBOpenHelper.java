@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
+ * 创建数据库表
  * Created by Administrator on 2016/6/15.
  */
 public class DBOpenHelper extends SQLiteOpenHelper {
@@ -14,10 +15,8 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table news (_id integer primary key autoincrement,type integer,nid integer," +
-                "stamp text,icon text,title text,summary text,link text)");
         db.execSQL("create table lovenews(_id integer primary key autoincrement,type integer," +
-                "nid integer,stamp text,icon text,title text,summary text,link text)");
+                "nid integer,stamp text,icon text,title text,summary text,link text)");//创建表
     }
 
     @Override
