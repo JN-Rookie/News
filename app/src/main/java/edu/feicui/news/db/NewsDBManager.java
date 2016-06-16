@@ -17,24 +17,24 @@ import edu.feicui.news.bean.News;
 public class NewsDBManager {
     private DBOpenHelper dbHelper;
     private Context      context;
-    private List<News.DataBean> mData=new ArrayList<>();
+    private List<News.DataBean> mData = new ArrayList<>();
 
-    public  NewsDBManager(Context context){
-        this.context=context;
-        dbHelper=new DBOpenHelper(context);
+    public NewsDBManager(Context context) {
+        this.context = context;
+        dbHelper = new DBOpenHelper(context);
     }
 
-//    添加数据的方法
-    public boolean saveLoveNews(String summary, String icon, String stamp, String title, String nid, String link, String type){
+    //    添加数据的方法
+    public boolean saveLoveNews(String summary, String icon, String stamp, String title, String nid, String link, String type) {
         try {
-            SQLiteDatabase db=dbHelper.getWritableDatabase();
-            Cursor cursor=db.rawQuery("select * from lovenews where nid="+nid,null);
-            if(cursor.moveToFirst()){
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor cursor = db.rawQuery("select * from lovenews where nid=" + nid, null);
+            if (cursor.moveToFirst()) {
                 cursor.close();
                 return false;
             }
             cursor.close();
-            ContentValues values=new ContentValues();
+            ContentValues values = new ContentValues();
             values.put("type", type);
             values.put("nid", nid);
             values.put("stamp", stamp);
@@ -51,11 +51,11 @@ public class NewsDBManager {
         }
     }
 
-//    读取数据库表的方法
+    //    读取数据库表的方法
     public List<News.DataBean> queryNews() {
-        SQLiteDatabase db=dbHelper.getWritableDatabase();
-        String sql="select * from lovenews ";
-        Cursor cursor=db.rawQuery(sql, null);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "select * from lovenews ";
+        Cursor cursor = db.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
             do {
                 String type = cursor.getString(cursor.getColumnIndex("type"));
@@ -65,12 +65,20 @@ public class NewsDBManager {
                 String title = cursor.getString(cursor.getColumnIndex("title"));
                 String summary = cursor.getString(cursor.getColumnIndex("summary"));
                 String link = cursor.getString(cursor.getColumnIndex("link"));
-                News.DataBean news = new News.DataBean(summary,icon, stamp,title, nid, link,type);
+                News.DataBean news = new News.DataBean(summary, icon, stamp, title, nid, link, type);
                 mData.add(news);
             } while (cursor.moveToNext());
             cursor.close();
             db.close();
         }
+        return mData;
+    }
+
+    //    删除数据的方法
+    public List<News.DataBean> deleteNews(String nid) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "delete from lovenews where nid = "+nid;
+        db.execSQL(sql);
         return mData;
     }
 }

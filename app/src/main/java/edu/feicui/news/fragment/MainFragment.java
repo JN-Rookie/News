@@ -100,6 +100,7 @@ public class MainFragment extends Fragment implements OnRefreshListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("num","1");
                 intent.putExtra("link", mAdapter.getItem(position - 1).getLink());
                 intent.putExtra("title", mAdapter.getItem(position - 1).getTitle());
                 intent.putExtra("type", mAdapter.getItem(position - 1).getType());

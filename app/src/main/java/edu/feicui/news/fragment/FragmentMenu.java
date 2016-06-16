@@ -57,6 +57,7 @@ public class FragmentMenu extends Fragment implements View.OnClickListener {
                 rls[1].setBackgroundColor(0x33c85555);
                 Intent intent=new Intent(getActivity(), CollectionActivity.class);
                 startActivity(intent);
+
                 break;
             case R.id.rl_local:
                 rls[2].setBackgroundColor(0x33c85555);

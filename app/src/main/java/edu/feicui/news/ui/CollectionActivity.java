@@ -42,6 +42,7 @@ public class CollectionActivity extends AppCompatActivity implements AdapterView
         loadLoveNews();
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
+
     }
 
     /**从数据库中加载保存的新闻*/
@@ -50,10 +51,19 @@ public class CollectionActivity extends AppCompatActivity implements AdapterView
         mAdapter.addData(mData);
     }
 
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(getApplicationContext(), WebActivity.class);
         intent.putExtra("link", mAdapter.getItem(position).getLink());
+        intent.putExtra("title", mAdapter.getItem(position).getTitle());
+        intent.putExtra("type", mAdapter.getItem(position).getType());
+        intent.putExtra("icon", mAdapter.getItem(position ).getIcon());
+        intent.putExtra("stamp", mAdapter.getItem(position ).getStamp());
+        intent.putExtra("nid", mAdapter.getItem(position ).getNid());
+        intent.putExtra("summary", mAdapter.getItem(position ).getSummary());
+        intent.putExtra("num","2");
         startActivity(intent);
+        finish();
     }
 }
